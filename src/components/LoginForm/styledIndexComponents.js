@@ -6,23 +6,26 @@ export const AppContainer = styled.div`
   align-items: center;
   min-height: 100vh;
 `
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  width: 350px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 350px;
 `
+
 export const LoginLogo = styled.img`
   width: 180px;
   align-self: center;
   margin-bottom: 15px;
 `
+
 export const InputContainer = styled.div`
   width: 100%;
   margin-top: 15px;
 `
+
 export const LoginButton = styled.button`
   width: 100%;
   background-color: #4f46e5;

@@ -25,18 +25,26 @@ class LoginForm extends Component {
     errorMsg: '',
   }
 
-  onSubmitFailure = errorMsg => {
-    this.setState({showSubmitError: true, errorMsg})
+  onChangeHandler = event => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  OnShowPassword = () => {
+    this.setState(prevState => ({showPassword: !prevState.showPassword}))
   }
 
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
-    Cookies.set('jwt_token', jwtToken, {expires: 30, path: '/'})
+
+    Cookies.set('jwt_token', jwtToken, {
+      expires: 30,
+      path: '/',
+    })
     history.replace('/')
   }
 
-  onChangeHandler = event => {
-    this.setState({[event.target.name]: event.target.value})
+  onSubmitFailure = errorMsg => {
+    this.setState({showSubmitError: true, errorMsg})
   }
 
   submitForm = async event => {
@@ -74,10 +82,6 @@ class LoginForm extends Component {
     )
   }
 
-  OnShowPassword = () => {
-    this.setState(prevState => ({showPassword: !prevState.showPassword}))
-  }
-
   renderPasswordField = () => {
     const {password, showPassword} = this.state
     const inputType = showPassword ? 'text' : 'password'
@@ -107,7 +111,6 @@ class LoginForm extends Component {
   render() {
     const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
-
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
