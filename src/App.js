@@ -1,10 +1,19 @@
-import './App.css'
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
-import NxtWatchContext from './context/NxtWatchContext'
-import LoginForm from './components/LoginForm/index'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
+import LoginForm from './components/LoginForm'
 import Home from './components/Home'
+// import VideoDetailView from './components/VideoDetailView'
+// import TrendingVideos from './components/TrendingVideos'
+// import GamingVideos from './components/GamingVideos'
+// import SavedVideos from './components/SavedVideos'
+// import NotFound from './components/NotFound'
+
+import ThemeAndVideoContext from './context/ThemeAndVideoContext'
+
+import './App.css'
+
+// Replace your code here
 
 class App extends Component {
   state = {
@@ -18,7 +27,9 @@ class App extends Component {
   }
 
   toggleTheme = () => {
-    this.setState(prevState => ({isDarkTheme: !prevState.isDarkTheme}))
+    this.setState(prevState => ({
+      isDarkTheme: !prevState.isDarkTheme,
+    }))
   }
 
   addVideo = video => {
@@ -34,14 +45,17 @@ class App extends Component {
 
   removeVideo = id => {
     const {savedVideos} = this.state
-    const updatedVideos = savedVideos.filter(eachVideo => eachVideo.id !== id)
-    this.setState({savedVideos: updatedVideos})
+    const updatedSavedVideos = savedVideos.filter(
+      eachVideo => eachVideo.id !== id,
+    )
+    this.setState({savedVideos: updatedSavedVideos})
   }
 
   render() {
     const {savedVideos, isDarkTheme, activeTab} = this.state
+    // console.log(savedVideos)
     return (
-      <NxtWatchContext.Provider
+      <ThemeAndVideoContext.Provider
         value={{
           savedVideos,
           isDarkTheme,
@@ -49,14 +63,23 @@ class App extends Component {
           toggleTheme: this.toggleTheme,
           addVideo: this.addVideo,
           changeTab: this.changeTab,
-          removeVideo: this.removeVideo,
         }}
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={Home} />
+          {/* <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoDetailView}
+          /> */}
+          {/* <ProtectedRoute exact path="/trending" component={TrendingVideos} /> */}
+          {/* <ProtectedRoute exact path="/gaming" component={GamingVideos} /> */}
+          {/* <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <Route path="/not-found" component={NotFound} /> */}
+          <Redirect to="not-found" />
         </Switch>
-      </NxtWatchContext.Provider>
+      </ThemeAndVideoContext.Provider>
     )
   }
 }

@@ -94,7 +94,7 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <LoaderContainer data-testid="loader">
+    <LoaderContainer>
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </LoaderContainer>
   )
@@ -136,8 +136,8 @@ class Home extends Component {
             <>
               <Header />
               <NavigationBar />
-              <HomeContainer data-testid="home" bgColor={bgColor}>
-                <BannerContainer data-testid="banner" display={display}>
+              <HomeContainer bgColor={bgColor}>
+                <BannerContainer display={display}>
                   <BannerLeftPart>
                     <BannerImage
                       src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
@@ -149,10 +149,7 @@ class Home extends Component {
                     <BannerButton type="button">GET IT NOW</BannerButton>
                   </BannerLeftPart>
                   <BannerRightPart>
-                    <BannerCloseButton
-                      data-testid="close"
-                      onClick={this.onCloseBanner}
-                    >
+                    <BannerCloseButton onClick={this.onCloseBanner}>
                       <AiOutlineClose size={25} />
                     </BannerCloseButton>
                   </BannerRightPart>
@@ -165,10 +162,7 @@ class Home extends Component {
                     onChange={this.onChangeInput}
                     color={textColor}
                   />
-                  <SearchIconContainer
-                    data-testid="searchButton"
-                    onClick={this.getSearchResults}
-                  >
+                  <SearchIconContainer onClick={this.getSearchResults}>
                     <AiOutlineSearch size={20} />
                   </SearchIconContainer>
                 </SearchContainer>
