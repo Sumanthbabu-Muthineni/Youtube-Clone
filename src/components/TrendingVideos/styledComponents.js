@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const GamingContainer = styled.div`
+export const TrendingContainer = styled.div`
   background-color: ${props => props.bgColor};
   min-height: 100vh;
   margin-top: 60px;
@@ -11,11 +11,11 @@ export const GamingContainer = styled.div`
     margin-bottom: 0px;
   }
 `
-export const GamingVideoTitle = styled.div`
+export const TrendingVideoTitle = styled.div`
   display: flex;
   align-items: center;
 `
-export const GamingTitleIconContainer = styled.div`
+export const TitleIconContainer = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 80px;
@@ -28,22 +28,20 @@ export const GamingTitleIconContainer = styled.div`
     margin-left: 40px;
   }
 `
-export const GamingText = styled.h1`
+export const TrendingText = styled.h1`
   font-family: Roboto;
   font-size: 25px;
   color: ${props => props.color};
   @media screen and (min-width: 768px) {
     font-size: 35px;
+  }
 `
-export const GamingVideoList = styled.ul`
+export const TrendingVideoList = styled.ul`
   list-style-type: none;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0px;
   padding: 0px;
-  @media screen and (min-width: 768px) {
-    margin-left: 40px;
-  }
 `
 export const LoaderContainer = styled.div`
   display: flex;

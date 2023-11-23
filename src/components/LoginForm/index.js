@@ -14,7 +14,7 @@ import {
   CheckboxContainer,
   Checkbox,
   ShowPassword,
-} from './styledIndexComponents'
+} from './styledComponents'
 
 class LoginForm extends Component {
   state = {

@@ -53,7 +53,11 @@ const Header = props => (
             />
           </LogoLink>
           <ActionsContainer>
-            <ThemeButton type="button" onClick={onChangeTheme}>
+            <ThemeButton
+              type="button"
+              data-testid="theme"
+              onClick={onChangeTheme}
+            >
               {isDarkTheme ? (
                 <BsBrightnessHigh color="#ffffff" size={25} />
               ) : (
@@ -76,7 +80,11 @@ const Header = props => (
                 <ModalContainer>
                   <ModalDesc>Are you sure, you want to logout?</ModalDesc>
                   <ButtonsContainer>
-                    <CloseButton type="button" onClick={() => close()}>
+                    <CloseButton
+                      type="button"
+                      data-testid="closeButton"
+                      onClick={() => close()}
+                    >
                       Cancel
                     </CloseButton>
 
@@ -100,7 +108,11 @@ const Header = props => (
                 <ModalContainer>
                   <ModalDesc>Are you sure, you want to logout?</ModalDesc>
                   <ButtonsContainer>
-                    <CloseButton type="button" onClick={() => close()}>
+                    <CloseButton
+                      type="button"
+                      data-testid="closeButton"
+                      onClick={() => close()}
+                    >
                       Cancel
                     </CloseButton>
 

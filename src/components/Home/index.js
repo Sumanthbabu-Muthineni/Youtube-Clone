@@ -94,7 +94,7 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <LoaderContainer>
+    <LoaderContainer data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </LoaderContainer>
   )
@@ -136,33 +136,44 @@ class Home extends Component {
             <>
               <Header />
               <NavigationBar />
-              <HomeContainer bgColor={bgColor}>
-                <BannerContainer display={display}>
+              <HomeContainer data-testid="home" bgColor={bgColor}>
+                <BannerContainer data-testid="banner" display={display}>
                   <BannerLeftPart>
                     <BannerImage
                       src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                       alt="nxt watch logo"
                     />
-                    <BannerText>
-                      Buy Nxt Watch Premium prepaid plans with <br /> UPI
-                    </BannerText>
+                    {bannerDisplay === 'none' ? (
+                      ''
+                    ) : (
+                      <BannerText>
+                        Buy Nxt Watch Premium prepaid plans with <br /> UPI
+                      </BannerText>
+                    )}
                     <BannerButton type="button">GET IT NOW</BannerButton>
                   </BannerLeftPart>
                   <BannerRightPart>
-                    <BannerCloseButton onClick={this.onCloseBanner}>
+                    <BannerCloseButton
+                      data-testid="close"
+                      onClick={this.onCloseBanner}
+                    >
                       <AiOutlineClose size={25} />
                     </BannerCloseButton>
                   </BannerRightPart>
                 </BannerContainer>
-                <SearchContainer>
+                <SearchContainer data-testid="searchButton">
                   <SearchInput
                     type="search"
                     placeholder="Search"
                     value={searchInput}
                     onChange={this.onChangeInput}
                     color={textColor}
+                    data-testid="searchButton"
                   />
-                  <SearchIconContainer onClick={this.getSearchResults}>
+                  <SearchIconContainer
+                    data-testid="searchButton"
+                    onClick={this.getSearchResults}
+                  >
                     <AiOutlineSearch size={20} />
                   </SearchIconContainer>
                 </SearchContainer>
